@@ -37,13 +37,14 @@ def process_image():
     image_url = body['image_url']
     ref = body['ref']
     width = body['width']
+    iterations = body['iterations']
     img_path = path.join('./images', f'image-{counter}.jpeg')
     counter += 1
     ok = download_image(img_path, image_url)
     if not ok:
         print('Could not download image')
         return jsonify({'error': 'Could not download image'})
-    return jsonify(image_to_geojson_contours(img_path, ref, width))
+    return jsonify(image_to_geojson_contours(img_path, ref, width, iterations=iterations))
     # return jsonify(dummy)
 
 
