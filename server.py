@@ -12,22 +12,6 @@ counter = 0
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-# add cors headers
-dummy = {
-    "features": [{
-        "type": "Feature",
-        "geometry": {
-            "type": "Polygon",
-            "coordinates": [[[0, 0], [10, 0], [10, 10]]],
-        },
-        "properties": {
-            "fill": "#0fff00",
-            "stroke-width": "3",
-            "fill-opacity": 0.6
-        },
-    }]
-}
-
 
 @app.route('/trees', methods=['POST'])
 @cross_origin()
@@ -45,7 +29,6 @@ def process_image():
         print('Could not download image')
         return jsonify({'error': 'Could not download image'})
     return jsonify(image_to_geojson_contours(img_path, ref, width, iterations=iterations))
-    # return jsonify(dummy)
 
 
 def download_image(name, image_url):

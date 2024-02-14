@@ -1,4 +1,3 @@
-import base64
 import json
 from os import path
 import cv2
