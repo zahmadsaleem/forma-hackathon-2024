@@ -29,8 +29,6 @@ def contour_image(image_np, iterations=2):
     return mask, union_of_contours(large_contours, mask.shape)
 
 
-# cv2.pointPolygonTest(cnt, (np.uint32(cnt2[0][0][0]).item(), np.uint32(cnt2[0][0][1]).item()),
-#                                     False)
 def union_of_contours(contours, image_shape):
     blank = np.zeros(image_shape, dtype=np.uint8)
     cv2.drawContours(blank, contours, -1, (255), thickness=cv2.FILLED)
